@@ -1,0 +1,41 @@
+.jumbotron
+  .container-fluid
+    .row
+      .col-sm-2
+        %img{src: 'det 925 black.png', style: 'width:200px;'}
+      .col-sm-10
+        %ul#home-links.list-inline.text-center
+          %li= link_to 'Cadre', '/cadre'
+          %li= link_to 'Prospective Students', '/prospective'
+          %li= link_to 'Photos', '/photos'
+          %li= link_to 'Arnold Air Society', '/aas'
+          %li= link_to 'Drill Team & Color Guard', '/dtcg'
+          %li= link_to 'Alumni', '/alumni'
+.who-are-we
+  .container
+    .page-header
+      %h1 Who Are We?
+    %p
+      Detachment 925 is an Air Force ROTC program that covers the campuses of UW-Madison, UW-Whitewater, Edgewood, Madison Area Technical College and Maranatha Baptist University. Proud of high standards of professionalism and a well developed cadet run corps, Detachment 925 is one of the more distinguished detachments in the nation.
+    %p
+      Experienced cadre and a well trained staff will teach you what you need to know to become a successful officer in the Air Force. The vast number of successful alumni is a testament to the quality of training received at Det 925.
+    %p
+      With a solid blend of physical fitness, leadership studies, and extra-curricular events, members of Det 925 develop into well-rounded individuals-helping them to excel at any activity, both in and out of the ROTC program.
+    %p
+      A good-sized program ensures that you will not be alone going through the ROTC experience. You are certain to meet other cadets that share many of your interests and academic programs.
+    %p
+      Quality training, variety in extracurricular activities, new found friends and a professional atmosphere are just a few of the many reasons why becoming part of the Detachment 925 Air Force ROTC program could be a sound decision for your future
+    %br
+.where-are-we
+  .container.text-center
+    .page-header
+      %h1 Where Are We?
+    %iframe(src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2914.6906169393724!2d-89.41248884911862!3d43.06897407904325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8807acc500770eb1%3A0xe3c302c1ce735d65!2s1433+Monroe+St%2C+Madison%2C+WI+53711!5e0!3m2!1sen!2sus!4v1481167751130" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen)
+    %div{style: 'padding: 15px;'}
+.contact
+  .container.text-center
+    .page-header
+      %h1 Contact Us
+    .row
+      .col-md-6
+        = render 'contact_us/contacts/new'

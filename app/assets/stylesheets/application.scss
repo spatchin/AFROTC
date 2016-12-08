@@ -1,0 +1,37 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import '1st_load_framework';
+@import 'navbar';
+
+.jumbotron {
+  background-image: url('/color_guard.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #000;
+  height: 400px;
+}
+
+p {
+  text-indent: 15px;
+}
+
+body {
+  background-color: rgb(247, 247, 247);
+}
+
+.who-are-we {
+  text-align: center;
+}
+
+.where-are-we {
+  background-color: rgb(218, 223, 225);
+}
+
+#home-links {
+  padding: 35px;
+  font: 120% Helvetica, sans-serif;
+  a {
+    padding: 15px;
+    color: #FFF;
+  }
+}

@@ -22,7 +22,6 @@ gem 'bootstrap-sass'
 gem 'devise'
 gem 'devise_invitable'
 gem 'haml-rails'
-gem 'high_voltage'
 group :development do
   gem 'better_errors'
   gem 'html2haml'

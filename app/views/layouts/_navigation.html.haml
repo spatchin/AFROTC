@@ -1,13 +1,14 @@
--# navigation styled for Bootstrap 3.0
-%nav.navbar.navbar-default.navbar-fixed-top
+#menu.navbar.navbar-default.navbar-fixed-top{:role => "navigation"}
   .container
     .navbar-header
-      %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+      %a.navbar-brand{:href => "/"} Det 925
+      %button.navbar-toggle{"data-target" => ".navbar-menubuilder", "data-toggle" => "collapse", :type => "button"}
         %span.sr-only Toggle navigation
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      = link_to 'Home', root_path, class: 'navbar-brand'
-    .collapse.navbar-collapse
-      %ul.nav.navbar-nav
-        = render 'layouts/navigation_links'
+    .collapse.navbar-collapse.navbar-menubuilder
+      %ul.nav.navbar-nav.navbar-left
+        %li= link_to 'Home', root_path
+        %li= link_to 'Cadet Area', '#'
+
