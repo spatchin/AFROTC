@@ -1,7 +1,9 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import 'rails_bootstrap_forms';
 @import '1st_load_framework';
 @import 'navbar';
+@import 'footer';
 
 .jumbotron {
   background-image: url('/color_guard.jpg');
@@ -25,6 +27,19 @@ body {
 
 .where-are-we {
   background-color: rgb(218, 223, 225);
+}
+
+.contact-us {
+  form {
+    input {
+      padding: 20px;
+      height: 60px;
+    }
+    textarea {
+      padding: 20px;
+      height: 213px;
+    }
+  }
 }
 
 #home-links {
