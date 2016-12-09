@@ -8,10 +8,12 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => 'reload'
     = csrf_meta_tags
   %body
-    .header
+    #header
       = render 'layouts/navigation'
-    %main{:role => "main"}
-      = render 'layouts/messages'
-      = yield
-    .footer
+    #wrapper
+      %main{:role => "main"}
+        = render 'layouts/messages'
+        = yield
+      #push
+    #footer
       = render 'layouts/footer'

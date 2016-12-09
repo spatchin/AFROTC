@@ -44,3 +44,4 @@ group :test do
   gem 'selenium-webdriver'
 end
 gem 'bootstrap_form'
+gem 'font-awesome-sass', '~> 4.7.0'
