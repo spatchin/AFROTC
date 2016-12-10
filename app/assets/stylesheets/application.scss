@@ -27,6 +27,9 @@ html, body {
 .who-are-we {
   text-align: center;
   font-size: 110%;
+  .panel {
+    height: 100%;
+  }
 }
 
 .where-are-we {
