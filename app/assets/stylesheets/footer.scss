@@ -1,7 +1,10 @@
+$footer-height: 150px;
+
 #footer {
-  padding: 50px;
-	color: #FFF;
-	background-color: rgb(1, 30, 57);
+  padding: 40px;
+  color: #FFF;
+  background-color: rgb(1, 30, 57);
+  p { font-size: 12px; }
 	a {
     color: #FFF;
 	  text-decoration: none;
@@ -13,9 +16,9 @@
 
   /* Equal to height of footer */
   /* But also accounting for potential margin-bottom of last child */
-  margin-bottom: -200px;
+  margin-bottom: -1 * $footer-height;
 }
 #footer,
 #push {
-  height: 200px;
+  height: $footer-height;
 }

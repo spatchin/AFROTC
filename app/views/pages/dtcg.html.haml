@@ -1,5 +1,12 @@
 = render 'subnav', image_location: '/cg.jpg'
-.container
-  .page-header
-    %h1.text-center
-      Drill Team and Color Guard
+.row
+  .col-md-offset-2.col-md-8
+    .page-header
+      %h1.text-center
+        Color Guard
+    = render 'carousel'
+    .page-header
+      %h1.text-center
+        Drill Team
+    .embed-responsive.embed-responsive-16by9
+      %iframe(src="https://docs.google.com/file/d/0Bxa2A-oqU2xkbFB4NjZYdWdfR0k/preview" width="640" height="480")
