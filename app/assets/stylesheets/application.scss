@@ -30,7 +30,11 @@ html, body {
   text-align: center;
   font-size: 110%;
   .panel {
-    height: 100%;
+    border-radius:0;
+    transition: box-shadow 0.5s;  
+  }
+  .panel:hover {
+    box-shadow: 5px 0px 40px rgba(0,0,0, .2);
   }
 }
 
@@ -60,6 +64,20 @@ html, body {
   p {
     padding-bottom: 20px;
   }
+}
+
+.privacy {
+  h2 {
+    text-decoration: underline;
+  }
+}
+
+#back-to-top {
+    cursor: pointer;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display:none;
 }
 
 #home-links {

@@ -2,7 +2,7 @@
 %html
   %head
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
-    %title= content_for?(:title) ? yield(:title) : 'Afrotc'
+    %title= content_for?(:title) ? yield(:title) : 'AFROTC Detachment 925'
     %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'Afrotc'}"}
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track' => 'reload'
@@ -14,6 +14,8 @@
       %main{:role => "main"}
         = render 'layouts/messages'
         = yield
+        %a#back-to-top.btn.btn-primary(href="#" role="button" style="background-color: rgb(193,18,33);")
+          %span.glyphicon.glyphicon-chevron-up
       #push
     #footer
       = render 'layouts/footer'
