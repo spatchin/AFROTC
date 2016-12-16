@@ -1,8 +1,9 @@
 #menu.navbar.navbar-default{:role => "navigation"}
   .container
     .navbar-header
-      %a.navbar-brand{:href => "/"}
-        %img{src: '/af logo.png', style: 'padding-bottom: 5px; height: 30px; width: 30px'}
+      .navbar-brand
+        / %img{src: '/af logo.png', style: 'padding-bottom: 5px; height: 30px; width: 30px'}
+        Det 925
       %button.navbar-toggle{"data-target" => ".navbar-menubuilder", "data-toggle" => "collapse", :type => "button"}
         %span.sr-only Toggle navigation
         %span.icon-bar
@@ -11,5 +12,5 @@
     .collapse.navbar-collapse.navbar-menubuilder
       %ul.nav.navbar-nav.navbar-left
         %li= link_to 'Home', root_path
-        %li= link_to 'Cadet Area', '#'
+        %li= link_to 'Cadet Area', '/under_construction'
 
