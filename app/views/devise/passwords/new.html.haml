@@ -1,0 +1,11 @@
+.row
+  .col-md-4.col-md-offset-4
+    .panel.panel-default{style: 'margin-top: 20%;'}
+      .panel-heading.text-center
+        %h3 Forgot your password?
+        %p We'll send password reset instructions.
+      .panel-body
+        = bootstrap_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, role: 'form'}) do |f|
+          = f.email_field :email, autofocus: true
+          = f.submit 'Reset Password', class: 'btn btn-primary', style: 'width: 100%;'
+

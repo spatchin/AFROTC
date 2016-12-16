@@ -15,3 +15,15 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
+
+$(document).on('turbolinks:load', function(){
+  $(".alert" ).fadeOut(5000);
+  // var clipboard = new Clipboard('#clip');
+  // clipboard.on('success', function(e) {
+  //   e.clearSelection();
+  //   $('#clip').attr('title', 'Copied!').tooltip('show').removeAttr('title');
+  //   setTimeout(function () {
+  //       $('#clip').tooltip('destroy');
+  //   }, 2000)
+  // });
+});

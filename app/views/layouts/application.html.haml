@@ -12,7 +12,8 @@
       = render 'layouts/navigation'
     #wrapper
       %main{:role => "main"}
-        = render 'layouts/messages'
+        .container-fluid
+          = render 'layouts/messages'
         = yield
         %a#back-to-top.btn.btn-primary(href="#" role="button" style="background-color: rgb(193,18,33);")
           %span.glyphicon.glyphicon-chevron-up
