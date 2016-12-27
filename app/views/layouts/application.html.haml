@@ -10,11 +10,14 @@
   %body
     #header
       = render 'layouts/navigation'
+      = render 'pages/subnav', image_location: subnav_img unless subnav_img.nil?
     #wrapper
       %main{:role => "main"}
-        .container-fluid
+        .container
           = render 'layouts/messages'
-        = yield
+          = yield unless request.fullpath == '/'
+        = yield if request.fullpath == '/'
+        .container-fluid
         %a#back-to-top.btn.btn-primary(href="#" role="button" style="background-color: rgb(193,18,33);")
           %span.glyphicon.glyphicon-chevron-up
       #push

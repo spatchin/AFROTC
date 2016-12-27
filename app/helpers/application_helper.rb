@@ -8,4 +8,23 @@ module ApplicationHelper
       icon 'check' , style: 'color: green;'
     end
   end
+
+  def subnav_img
+    case request.fullpath
+    when '/'
+      '/color_guard.jpg'
+    when '/cadre'
+      '/cadre2016.jpg'
+    when '/prospective'
+      '/wk quiz.jpg'
+    when '/aas'
+      '/aas.jpg'
+    when '/dtcg'
+      '/cg.jpg'
+    when '/alumni'
+      '/commissioning.jpg'
+    else
+      nil
+    end
+  end
 end
