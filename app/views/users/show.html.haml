@@ -1,0 +1,10 @@
+.container
+  %h3 User
+  %p
+    %strong
+      Name: 
+    = @user.name if @user.name
+  %p
+    %strong
+      Email:
+    = @user.email if @user.email

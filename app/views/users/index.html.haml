@@ -1,0 +1,39 @@
+.container
+  .page-header
+    %h1
+      Manage Cadets
+    %ul.nav.nav-pills
+      %li
+        %a{href: '/cadet_area'}
+          Cadet Area
+      - if current_user.poc? || current_user.cadre? || current_user.admin?
+        %li.active
+          %a{href: users_path}
+            Cadet Management
+        %li
+          %a{href: events_path}
+            Event Management
+  .row
+    .col-md-offset-3.col-md-6
+      - attributes = %w(name email title role phone_number)
+      %table.table.table-striped
+        %thead
+          %tr
+            - attributes.each do |attribute|
+              %th= attribute.humanize
+            %th Status
+            %th Actions
+        %tbody
+          - @users.each do |user|
+            %tr
+              - attributes.each do |attribute|
+                %td= user.send(attribute)
+              %td.text-center= user_status(user)
+              %td= render 'actions', user: user
+  .row.text-center
+    .col-md-12
+      = bootstrap_form_for(User.new, url: user_invitation_path, layout: :inline) do |f|
+        .input-group
+          = f.email_field :email, placeholder: 'Email', hide_label: true
+          %span.input-group-btn
+            = f.submit 'Invite new user', class: 'btn btn-primary'

@@ -27,6 +27,7 @@ group :development do
   gem 'html2haml'
   gem 'rails_layout'
   gem 'spring-commands-rspec'
+  gem 'letter_opener', '~> 1.4', '>= 1.4.1'
 end
 group :development, :test do
   gem 'factory_girl_rails'
