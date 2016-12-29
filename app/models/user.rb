@@ -16,6 +16,7 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  name                   :string
+#  time_zone              :string           default("Central Time (US & Canada)")
 #  confirmation_token     :string
 #  confirmed_at           :datetime
 #  confirmation_sent_at   :datetime
@@ -30,6 +31,7 @@
 #  invitations_count      :integer          default(0)
 #  phone_number           :string
 #  title                  :string
+#  role                   :integer
 #
 
 class User < ApplicationRecord
@@ -40,7 +42,7 @@ class User < ApplicationRecord
 
   has_and_belongs_to_many :events
 
-  enum role: [:gmc, :poc, :cadre, :admin]
+  enum role: [:gmc, :poc, :flight_commander, :group_commander, :wing_comander, :cadre, :admin]
 
   after_initialize :set_default_role, if: :new_record?
 
@@ -51,5 +53,4 @@ class User < ApplicationRecord
   def set_default_role
     role ||= :gmc
   end
-
 end

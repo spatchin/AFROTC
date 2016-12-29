@@ -1,10 +1,18 @@
-.container
-  %h3 User
-  %p
-    %strong
-      Name: 
-    = @user.name if @user.name
-  %p
-    %strong
-      Email:
-    = @user.email if @user.email
+.row
+  .col-md-offset-3.col-md-6
+    .panel.panel-default
+      .panel-heading
+        %h3 User
+      .panel-body
+        %p
+          %strong
+            Name: 
+          = @user.name if @user.name
+        %p
+          %strong
+            Email:
+          = @user.email if @user.email
+
+.row.text-center
+  = link_to 'Return to cadets', users_path, class: 'btn btn-default'
+  

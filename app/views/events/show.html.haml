@@ -1,13 +1,25 @@
-.container
-  %p#notice= notice
+.row
+  .col-md-offset-3.col-md-6
+    .panel.panel-default
+      .panel-heading
+        %h3= @event.name
+      .panel-body
+        %p
+          %strong
+            Category: 
+          = @event.category if @event.category
+        %p
+          %strong
+            Where:
+          = @event.location if @event.location
+        %p
+          %strong
+            When:
+          = @event.date if @event.date
+        %p
+          %strong
+            Mandatory:
+          = @event.mandatory ? 'Yes' : 'No' if @event.mandatory
 
-  %p
-    %b Type:
-    = @event.type
-  %p
-    %b User:
-    = @event.user
-
-  = link_to 'Edit', edit_event_path(@event)
-  \|
-  = link_to 'Back', events_path
+.row.text-center
+  = link_to 'Return to events', events_path, class: 'btn btn-default'          

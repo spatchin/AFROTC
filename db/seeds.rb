@@ -5,9 +5,18 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-User.destroy_all
 
-user = User.new({email: 'admin@email.com', password: 'password', password_confirmation: 'password'})
-user.skip_confirmation!
-user.save
-p user
+if Rails.env.development?
+  User.destroy_all
+
+  user = User.new({email: 'admin@example.com', name: 'admin', password: 'password', password_confirmation: 'password'})
+  user.skip_invitation
+  user.admin!
+  user.save
+  p user
+
+  user = User.new({email: 'user@example.com',name: 'user', password: 'password', password_confirmation: 'password'})
+  user.skip_invitation
+  user.save
+  p user
+end

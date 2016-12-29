@@ -16,6 +16,7 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  name                   :string
+#  time_zone              :string           default("Central Time (US & Canada)")
 #  confirmation_token     :string
 #  confirmed_at           :datetime
 #  confirmation_sent_at   :datetime
@@ -30,6 +31,7 @@
 #  invitations_count      :integer          default(0)
 #  phone_number           :string
 #  title                  :string
+#  role                   :integer
 #
 
 describe User do

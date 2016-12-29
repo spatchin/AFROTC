@@ -1,9 +1,6 @@
 class CadetAreaController < ApplicationController
-  before_action :verify_signed_in
+  before_action :authenticate_user!
 
   def index
   end
-
-  private
-
 end
