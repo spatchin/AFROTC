@@ -1,15 +1,2 @@
 .container
-  .page-header
-    %h1
-      Cadet Area
-    %ul.nav.nav-pills
-      %li.active
-        %a{href: '/cadet_area'}
-          Cadet Area
-      - if current_user.poc? || current_user.cadre? || current_user.admin?
-        %li
-          %a{href: users_path}
-            Cadet Management
-        %li
-          %a{href: events_path}
-            Event Management
+  = render 'cadet_area/header', page: :home

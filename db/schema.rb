@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161226235419) do
+ActiveRecord::Schema.define(version: 20170101180050) do
 
   create_table "events", force: :cascade do |t|
     t.string   "name"
@@ -42,12 +42,6 @@ ActiveRecord::Schema.define(version: 20161226235419) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                                                    null: false
     t.datetime "updated_at",                                                    null: false
-    t.string   "name"
-    t.string   "time_zone",              default: "Central Time (US & Canada)"
-    t.string   "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email"
     t.string   "invitation_token"
     t.datetime "invitation_created_at"
     t.datetime "invitation_sent_at"
@@ -59,7 +53,11 @@ ActiveRecord::Schema.define(version: 20161226235419) do
     t.string   "phone_number"
     t.string   "title"
     t.integer  "role"
+    t.string   "name"
+    t.string   "time_zone",              default: "Central Time (US & Canada)"
+    t.integer  "flight_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["flight_id"], name: "index_users_on_flight_id"
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
     t.index ["invitations_count"], name: "index_users_on_invitations_count"
     t.index ["invited_by_id"], name: "index_users_on_invited_by_id"

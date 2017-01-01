@@ -15,12 +15,6 @@
 #  last_sign_in_ip        :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  name                   :string
-#  time_zone              :string           default("Central Time (US & Canada)")
-#  confirmation_token     :string
-#  confirmed_at           :datetime
-#  confirmation_sent_at   :datetime
-#  unconfirmed_email      :string
 #  invitation_token       :string
 #  invitation_created_at  :datetime
 #  invitation_sent_at     :datetime
@@ -32,6 +26,9 @@
 #  phone_number           :string
 #  title                  :string
 #  role                   :integer
+#  name                   :string
+#  time_zone              :string           default("Central Time (US & Canada)")
+#  flight_id              :integer
 #
 
 describe User do

@@ -3,14 +3,15 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @users = User.all
+    if current_user.flight_cc?
+      @users = User.all.select { |u| u.flight.name == current_user.flight.name if u.flight }
+    else
+      @users = User.all
+    end
   end
 
   def show
     @user = User.find(params[:id])
-    unless @user == current_user
-      redirect_to root_path, :alert => "Access denied."
-    end
   end
 
   # GET

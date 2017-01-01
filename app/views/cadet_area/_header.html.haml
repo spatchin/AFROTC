@@ -1,0 +1,8 @@
+.container
+  .page-header
+    %h1= "#{page.to_s.capitalize} Management"
+    %ul.nav.nav-pills
+      %li{class: "#{'active' if page == :home}"}= link_to 'Cadet Area', '/cadet_area'
+      %li{class: "#{'active' if page == :user}"}= link_to 'Cadet Management', users_path
+      %li{class: "#{'active' if page == :event}"}= link_to 'Event Management', events_path unless current_user.gmc?
+      %li{class: "#{'active' if page == :role}"}= link_to 'Role Management', '#' if current_user.cadre? || current_user.admin?

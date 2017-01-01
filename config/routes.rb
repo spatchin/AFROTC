@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
   resources :events
+  resources :flights
 
   get '/:page', to: 'pages#show', as: 'pages'
   root 'pages#show', page: 'home'
