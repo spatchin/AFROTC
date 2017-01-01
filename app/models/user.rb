@@ -25,10 +25,8 @@
 #  invitations_count      :integer          default(0)
 #  phone_number           :string
 #  title                  :string
-#  role                   :integer
 #  name                   :string
 #  time_zone              :string           default("Central Time (US & Canada)")
-#  flight_id              :integer
 #
 
 class User < ApplicationRecord
@@ -38,16 +36,16 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_and_belongs_to_many :events
+  has_and_belongs_to_many :roles
 
-  enum role: [:gmc, :poc, :cadre, :admin]
+  before_validation :set_role
 
-  after_initialize :set_default_role, if: :new_record?
-
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true
   validates :email, presence: true, uniqueness: true
-  validates :role, presence: true
+  validates :roles, presence: true
 
-  def set_default_role
-    role ||= :gmc
+  def set_role
+    roles << Role.where(name: 'gmc').first_or_create unless roles # default role
+    roles = roles.reject { |r| r.name == 'gmc'} if roles && roles.pluck(:name).include?('poc')
   end
 end

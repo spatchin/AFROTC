@@ -25,10 +25,8 @@
 #  invitations_count      :integer          default(0)
 #  phone_number           :string
 #  title                  :string
-#  role                   :integer
 #  name                   :string
 #  time_zone              :string           default("Central Time (US & Canada)")
-#  flight_id              :integer
 #
 
 FactoryGirl.define do
