@@ -8,7 +8,7 @@
 #  reset_password_token   :string
 #  reset_password_sent_at :datetime
 #  remember_created_at    :datetime
-#  sign_in_count          :integer          default("0"), not null
+#  sign_in_count          :integer          default(0), not null
 #  current_sign_in_at     :datetime
 #  last_sign_in_at        :datetime
 #  current_sign_in_ip     :string
@@ -22,7 +22,7 @@
 #  invitation_limit       :integer
 #  invited_by_type        :string
 #  invited_by_id          :integer
-#  invitations_count      :integer          default("0")
+#  invitations_count      :integer          default(0)
 #  phone_number           :string
 #  title                  :string
 #  name                   :string
@@ -40,40 +40,22 @@
 #
 
 class User < ApplicationRecord
+  rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
   has_and_belongs_to_many :events
-  has_and_belongs_to_many :roles
 
   belongs_to :flight, optional: true
 
-  before_validation :set_role
-
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
+  
+  after_create :assign_default_role
 
-  def set_role
-    roles << Role.where(name: 'gmc').first_or_create unless roles # default role
-    roles = roles.reject { |r| r.name == 'gmc'} if roles && roles.pluck(:name).include?('poc')
-  end
-
-  def cadre?
-    roles.pluck(:name).include?('cadre')
-  end
-
-  def admin?
-    roles.pluck(:name).include?('admin')
-  end
-
-  def gmc?
-    roles.pluck(:name).include?('gmc') ||
-    roles.pluck(:rotc_class).include?('gmc')
-  end
-
-  def flight_cc?
-    roles.pluck(:name).include?('flight') && roles.pluck(:cc).include?(true)
+  def assign_default_role
+    self.add_role(:gmc) if self.roles.blank?
   end
 end

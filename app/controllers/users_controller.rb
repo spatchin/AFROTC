@@ -3,11 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    if current_user.flight_cc?
-      @users = User.all.select { |u| u.flight.name == current_user.flight.name if u.flight }
-    else
-      @users = User.all
-    end
+    @users = User.all
   end
 
   def show
@@ -70,6 +66,6 @@ class UsersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
-    params.require(:user).permit(:email, :name, :phone_number, :title, role_ids: [])
+    params.require(:user).permit(:email, :name, :phone_number, :title)
   end
 end

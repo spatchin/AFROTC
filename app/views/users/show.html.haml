@@ -17,6 +17,8 @@
           - attended = @user.events.select { |e| e.category.downcase == 'pt' }.count
           - total = Event.all.select { |e| e.category.downcase == 'pt' }.count
           = "#{attended}/#{total}"         
-.row.text-center
-  = link_to 'Return to cadets', users_path, class: 'btn btn-default'
-  
+.row
+  .col-sm-6.text-left
+    = link_to 'Return to users', users_path, class: 'btn btn-default'          
+  .col-sm-6.text-right
+    = link_to 'Edit user', edit_user_path(@user), class: 'btn btn-link'  

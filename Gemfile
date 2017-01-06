@@ -47,3 +47,4 @@ end
 gem 'bootstrap_form'
 gem 'font-awesome-sass', '~> 4.7.0'
 gem 'annotate'
+gem 'rolify'

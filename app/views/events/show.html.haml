@@ -29,5 +29,8 @@
         %ul(style='list-style: none;')
           - @event.users.each do |user|
             %li= user.name
-.row.text-center
-  = link_to 'Return to events', events_path, class: 'btn btn-default'          
+.row
+  .col-sm-6.text-left
+    = link_to 'Return to events', events_path, class: 'btn btn-default'          
+  .col-sm-6.text-right
+    = link_to 'Edit event', edit_event_path(@event), class: 'btn btn-link'

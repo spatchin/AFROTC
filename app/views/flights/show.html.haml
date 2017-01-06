@@ -6,9 +6,17 @@
       .panel-body
         %p
           %strong
+            Commander:
+          = cc = @flight.cadets.with_role(:flight_cc).take.name
+        %p
+          %strong
             Cadets
         %ul
           - @flight.cadets.each do |cadet|
-            %li= cadet.name
-.row.text-center
-  = link_to 'Return to flights', flights_path, class: 'btn btn-default'          
+            - unless cadet.name == cc
+              %li= cadet.name
+.row
+  .col-sm-6.text-left
+    = link_to 'Return to flights', flights_path, class: 'btn btn-default'          
+  .col-sm-6.text-right
+    = link_to 'Edit flight', edit_flight_path(@flight), class: 'btn btn-link'

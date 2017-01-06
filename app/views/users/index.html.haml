@@ -6,7 +6,6 @@
         %tr
           %th Name
           %th Email
-          %th Roles
           %th Status
           %th Actions
       %tbody
@@ -14,7 +13,6 @@
           %tr
             %td= user.name
             %td= user.email
-            %td= user.roles.map { |r| r.cc ? "#{r.name} cc" : r.name }.join("<br>").html_safe
             %td.text-center= user_status(user)
             %td= render 'actions', user: user
 .row.text-center

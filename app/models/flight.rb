@@ -9,5 +9,9 @@
 #
 
 class Flight < ApplicationRecord
+  resourcify
+  
   has_many :cadets, class_name: 'User'
+
+  validates :name, presence: true
 end
