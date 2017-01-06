@@ -20,7 +20,7 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
-    @users = User.all.where(role: 'gmc')
+    @users = User.all.select{ |u| u.gmc? }
   end
 
   # POST /events

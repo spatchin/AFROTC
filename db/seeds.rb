@@ -8,41 +8,42 @@
 
 if Rails.env.development?
   User.destroy_all
+  Role.destroy_all
 
   admin = User.new({email: 'admin@email.com', name: 'admin', password: 'password', password_confirmation: 'password'})
   admin.skip_invitation
+  admin.roles << Role.where(name: 'admin', rotc_class: 'poc').first_or_create
   admin.save!
-  admin.roles << Role.where(name: 'admin').first_or_create
   p admin
 
   wingCC = User.new({email: 'wingcc@email.com', name: 'wing/cc', password: 'password', password_confirmation: 'password'})
   wingCC.skip_invitation
+  wingCC.roles << Role.where(name: 'wing', rotc_class: 'poc', cc: true).first_or_create
   wingCC.save!
-  wingCC.roles += [Role.where(name: 'poc').first_or_create, Role.where(name: 'wing_cc').first_or_create]
   p wingCC  
 
   groupCC = User.new({email: 'groupcc@email.com', name: 'group/cc', password: 'password', password_confirmation: 'password'})
   groupCC.skip_invitation
+  groupCC.roles << Role.where(name: 'group', rotc_class: 'poc', cc: true).first_or_create
   groupCC.save!
-  groupCC.roles += [Role.where(name: 'poc').first, Role.where(name: 'msg_cc').first_or_create]
   p groupCC
 
   flightCC = User.new({email: 'flight1_cc@email.com', name: 'flight1/cc', password: 'password', password_confirmation: 'password'})
   flightCC.skip_invitation
+  flightCC.roles << Role.where(name: 'flight1', rotc_class: 'poc', cc: true).first_or_create
   flightCC.save!
-  flightCC.roles += [Role.where(name: 'poc').first, Role.where(name: 'aflight_cc').first_or_create]
   p flightCC
 
   flightCC = User.new({email: 'flight2_cc@email.com', name: 'flight2/cc', password: 'password', password_confirmation: 'password'})
   flightCC.skip_invitation
+  flightCC.roles << Role.where(name: 'flight2', rotc_class: 'poc', cc: true).first_or_create
   flightCC.save!
-  flightCC.roles += [Role.where(name: 'poc').first, Role.where(name: 'bflight_cc').first_or_create]
   p flightCC
 
   poc = User.new({email: 'poc@email.com', name: 'poc', password: 'password', password_confirmation: 'password'})
   poc.skip_invitation
+  poc.roles << Role.where(name: 'poc', rotc_class: 'poc').first_or_create
   poc.save!
-  poc.roles << Role.where(name: 'poc').first
   p poc  
 
   (1..10).each do |i|
@@ -51,8 +52,8 @@ if Rails.env.development?
   
     gmc = User.new({email: "gmc_#{i}@email.com", name: "gmc_#{i}", password: 'password', password_confirmation: 'password'})
     gmc.skip_invitation
+    gmc.roles << Role.where(name: '100', rotc_class: 'gmc').first_or_create
     gmc.save!
-    gmc.roles << Role.where(name: 'gmc').first_or_create
     p gmc
   end
 elsif Rails.env.production?

@@ -42,10 +42,26 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
-  validates :roles, presence: true
 
   def set_role
     roles << Role.where(name: 'gmc').first_or_create unless roles # default role
     roles = roles.reject { |r| r.name == 'gmc'} if roles && roles.pluck(:name).include?('poc')
+  end
+
+  def cadre?
+    roles.pluck(:name).include?('cadre')
+  end
+
+  def admin?
+    roles.pluck(:name).include?('admin')
+  end
+
+  def gmc?
+    roles.pluck(:name).include?('gmc') ||
+    roles.pluck(:rotc_class).include?('gmc')
+  end
+
+  def flight_cc?
+    roles.pluck(:name).include?('flight') && roles.pluck(:cc).include?(true)
   end
 end
