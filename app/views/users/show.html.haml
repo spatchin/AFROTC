@@ -8,6 +8,9 @@
           %strong Email:
           = @user.email
         %p
+          %strong Roles:
+          = @user.roles.pluck(:name).join(', ')
+        %p
           %strong LLAB Attendance:
           - attended = @user.events.select { |e| e.category.downcase == 'llab' }.count
           - total = Event.all.select { |e| e.category.downcase == 'llab' }.count

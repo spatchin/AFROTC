@@ -3,4 +3,5 @@
   = f.email_field :email
   = f.telephone_field :phone_number
   = f.text_field :title
+  = f.select :role_ids, Role.all.map { |r| [r.name, r.id] }, {}, multiple: true
   = f.submit 'Submit', class: 'btn btn-success', style: 'width:100%;'
