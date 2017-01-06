@@ -4,6 +4,8 @@
 #
 #  id         :integer          not null, primary key
 #  name       :string
+#  rotc_class :integer          default("0")
+#  cc         :boolean          default("f")
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

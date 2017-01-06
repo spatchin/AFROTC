@@ -1,17 +1,13 @@
 # == Schema Information
 #
-# Table name: roles
+# Table name: flights
 #
 #  id         :integer          not null, primary key
 #  name       :string
-#  rotc_class :integer          default("0")
-#  cc         :boolean          default("f")
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-FactoryGirl.define do
-  factory :role do
-    name "MyString"
-  end
+class Flight < ApplicationRecord
+  has_many :cadets, class_name: 'User'
 end

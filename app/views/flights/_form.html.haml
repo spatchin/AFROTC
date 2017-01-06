@@ -1,0 +1,4 @@
+= bootstrap_form_for flight do |f|
+  = f.text_field :name
+  = f.select :cadet_ids, User.all.map { |u| [u.name, u.id] }, {}, multiple: true
+  = f.submit 'Submit', class: 'btn btn-success', style: 'width:100%;'
