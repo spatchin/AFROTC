@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_resource, except: [:show, :edit, :update, :destroy]
 
   # GET /events
   # GET /events.json
@@ -20,7 +21,7 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
-    @users = User.all.select{ |u| u.gmc? }
+    @users = User.all
   end
 
   # POST /events
@@ -64,13 +65,16 @@ class EventsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_event
-      @event = Event.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def event_params
-      params.require(:event).permit(:name, :category, :location, :date, :mandatory, user_ids: [])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_event
+    @event = Event.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def event_params
+    params.require(:event).permit(:name, :category, :location,
+                                  :date, :mandatory, :creator_id,
+                                  user_ids: [])
+  end
 end

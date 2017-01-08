@@ -48,3 +48,6 @@ gem 'bootstrap_form'
 gem 'font-awesome-sass', '~> 4.7.0'
 gem 'annotate'
 gem 'rolify'
+gem 'pundit'
+gem "binding_of_caller"
+gem "select2-rails"

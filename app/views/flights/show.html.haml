@@ -2,19 +2,30 @@
   .col-md-offset-3.col-md-6
     .panel.panel-default
       .panel-heading
-        %h3= @flight.name
+        %h3 #{@flight.name} Flight
       .panel-body
-        %p
-          %strong
-            Commander:
-          = cc = @flight.cadets.with_role(:flight_cc).take.name
-        %p
-          %strong
-            Cadets
-        %ul
-          - @flight.cadets.each do |cadet|
-            - unless cadet.name == cc
-              %li= cadet.name
+        .row
+          .col-md-12
+          %p
+            %strong
+              Commander:
+            = cc = @flight.cadets.with_role(:cc, @flight).take.name
+          %p
+            %strong
+              Cadets
+          %table.table.table-hover
+            %thead
+              %tr
+                %th Name
+                %th Email
+                %th Phone
+            %tbody
+            - @flight.cadets.each do |cadet|
+              - unless cadet.name == cc
+                %tr
+                  %td= cadet.name
+                  %td= cadet.email
+                  %td= cadet.phone_number
 .row
   .col-sm-6.text-left
     = link_to 'Return to flights', flights_path, class: 'btn btn-default'          

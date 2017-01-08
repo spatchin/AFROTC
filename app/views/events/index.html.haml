@@ -5,19 +5,26 @@
     %table.table.table-striped
       %thead
         %tr
-          - attributes.each do |attribute|
-            %th= attribute.humanize
+          %th Name
+          %th Category
+          %th Location
+          %th Mandatory?
+          %th Date
           %th Actions
       %tbody
         - @events.each do |event|
           %tr
-            - attributes.each do |attribute|
-              - if attribute == 'Date'
-                - val = event.send(attribute).strftime("%c")
-              - else  
-                - val = event.send(attribute)
-              %td= [true, false].include?(val) ? val ? 'Yes' : 'No' : val
-            %td= render 'actions', event: event
-.row
-  .col-md-12.text-center
-    = link_to 'New Event', new_event_path, class: 'btn btn-primary'
+            %td= event.name
+            %td= event.category
+            %td= event.location
+            %td= event.mandatory ? 'Yes' : 'No'
+            %td= event.date
+            %td
+              = link_to icon('eye'), event if policy(event).show?
+              = link_to icon('pencil-square-o'), edit_event_path(event) if policy(event).edit?
+              = link_to icon('minus'), event, method: :delete, data: { confirm: 'Are you sure?' } if policy(event).destroy?
+
+- if policy(Event).new?
+  .row
+    .col-md-12.text-center
+      = link_to 'New Event', new_event_path, class: 'btn btn-primary'

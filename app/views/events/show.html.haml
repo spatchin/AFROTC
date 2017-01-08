@@ -16,10 +16,9 @@
           %strong
             When:
           = @event.date if @event.date
-        %p
-          %strong
-            Mandatory:
-          = @event.mandatory ? 'Yes' : 'No' if @event.mandatory
+        - if @event.mandatory
+          %p
+            %strong Mandatory
 .row
   .col-md-offset-3.col-md-6
     .panel.panel-default

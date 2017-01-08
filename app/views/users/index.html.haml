@@ -6,19 +6,27 @@
         %tr
           %th Name
           %th Email
-          %th Status
+          %th Phone
+          - if current_user.has_role?(:poc) || current_user.has_role?(:admin)
+            %th Status
           %th Actions
       %tbody
         - @users.each do |user|
           %tr
             %td= user.name
             %td= user.email
-            %td.text-center= user_status(user)
-            %td= render 'actions', user: user
-.row.text-center
-  .col-md-12
-    = bootstrap_form_for(User.new, url: user_invitation_path, layout: :inline) do |f|
-      .input-group
-        = f.email_field :email, placeholder: 'Email', hide_label: true
-        %span.input-group-btn
-          = f.submit 'Invite new user', class: 'btn btn-primary'
+            %td= user.phone_number
+            - if current_user.has_role?(:poc) || current_user.has_role?(:admin)
+              %td.text-center= user_status(user)
+            %td
+              = link_to icon('eye'), user if policy(user).show?
+              = link_to icon('pencil-square-o'), edit_user_path(user) if policy(user).edit?
+              = link_to icon('minus'), user, method: :delete, data: { confirm: 'Are you sure?' } if user != current_user && policy(user).destroy?
+- if policy(User).new?
+  .row.text-center
+    .col-md-12
+      = bootstrap_form_for(User.new, url: user_invitation_path, layout: :inline) do |f|
+        .input-group
+          = f.email_field :email, placeholder: 'Email', hide_label: true
+          %span.input-group-btn
+            = f.submit 'Invite new user', class: 'btn btn-primary'

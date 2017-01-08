@@ -14,10 +14,12 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require select2
 //= require_tree .
 
 $(document).on('turbolinks:load', function(){
   $(".alert" ).fadeOut(5000);
+  initSelect2();
   // var clipboard = new Clipboard('#clip');
   // clipboard.on('success', function(e) {
   //   e.clearSelection();
@@ -27,3 +29,14 @@ $(document).on('turbolinks:load', function(){
   //   }, 2000)
   // });
 });
+
+$(window).resize(function(){
+ initSelect2();
+});
+
+function initSelect2(){
+  $('.select2').select2({
+    placeholder: "Select an option",
+    theme: "bootstrap"
+  });
+}

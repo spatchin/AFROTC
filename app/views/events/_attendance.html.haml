@@ -1,9 +1,0 @@
-.row
-  .col-md-offset-3.col-md-6
-    .panel.panel-default
-      .panel-heading
-        %h3 Mark attendance
-      .panel-body
-        = bootstrap_form_for event do |f|
-          = f.select :user_ids, users.map{|u| [u.name, u.id]}, {label: 'Cadets attended'}, multiple: true
-          = f.submit

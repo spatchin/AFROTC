@@ -1,5 +1,7 @@
 class FlightsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_flight, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_resource, except: [:show, :edit, :update, :destroy]
 
   # GET /flights
   # GET /flights.json
@@ -62,13 +64,14 @@ class FlightsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_flight
-      @flight = Flight.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def flight_params
-      params.require(:flight).permit(:name, cadet_ids: [])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_flight
+    @flight = Flight.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def flight_params
+    params.require(:flight).permit(:name, cadet_ids: [])
+  end
 end

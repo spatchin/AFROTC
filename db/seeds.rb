@@ -10,7 +10,8 @@ if Rails.env.development?
   User.destroy_all
   Role.destroy_all
   Flight.destroy_all
-  
+  Event.destroy_all
+
   admin = User.new({email: 'admin@email.com', name: 'admin', password: 'password', password_confirmation: 'password'})
   admin.skip_invitation
   admin.add_role :admin
@@ -19,13 +20,13 @@ if Rails.env.development?
 
   wingCC = User.new({email: 'wingcc@email.com', name: 'wing/cc', password: 'password', password_confirmation: 'password'})
   wingCC.skip_invitation
-  wingCC.add_role :wing_cc
+  wingCC.add_role :poc
   wingCC.save!
   p wingCC  
 
   groupCC = User.new({email: 'groupcc@email.com', name: 'group/cc', password: 'password', password_confirmation: 'password'})
   groupCC.skip_invitation
-  groupCC.add_role :group_cc
+  groupCC.add_role :poc
   groupCC.save!
   p groupCC
 
@@ -33,8 +34,8 @@ if Rails.env.development?
 
   flightCC = User.new({email: 'flight1_cc@email.com', name: 'flight1/cc', password: 'password', password_confirmation: 'password'})
   flightCC.skip_invitation
-  flightCC.add_role :flight_cc
-  flightCC.add_role :commander, flight
+  flightCC.add_role :poc
+  flightCC.add_role :cc, flight
   flightCC.save!
   flight.cadets << flightCC
   p flightCC
@@ -46,9 +47,16 @@ if Rails.env.development?
   p poc  
 
   (1..10).each do |i|
-    llab = Event.create({name: "LLAB #{i}", category: 'LLAB', date: Time.now})
-    pt = Event.create({name: "PT #{i}", category: 'PT', date: Time.now})
-  
+    llab = Event.new({name: "LLAB #{i}", category: 'LLAB', date: Time.now})
+    llab.creator = admin
+    llab.save!
+    p llab
+
+    pt = Event.new({name: "PT #{i}", category: 'PT', date: Time.now})
+    pt.creator = admin
+    pt.save!
+    p pt
+
     gmc = User.new({email: "gmc_#{i}@email.com", name: "gmc_#{i}", password: 'password', password_confirmation: 'password'})
     gmc.skip_invitation
     gmc.add_role :gmc
@@ -57,6 +65,5 @@ if Rails.env.development?
     p gmc
   end
 elsif Rails.env.production?
-  ROLE_NAMES = %w(gmc poc cadre admin aflight_cc bflight_cc cflight_cc dflight_cc msg_cc wing_cc)
-  ROLE_NAMES.each { |name| Role.create(name: name) }
+
 end

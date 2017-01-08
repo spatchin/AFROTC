@@ -48,6 +48,8 @@ class User < ApplicationRecord
 
   has_and_belongs_to_many :events
 
+  has_many :created_events, class_name: 'Event', foreign_key: 'creator_id'
+
   belongs_to :flight, optional: true
 
   validates :name, presence: true
