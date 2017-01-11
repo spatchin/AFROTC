@@ -23,8 +23,7 @@ class FlightPolicy < ApplicationPolicy
 
   def edit?
     @user.has_role?(:admin) ||
-    @user.has_role?(:poc) ||
-    @resource.created_by?(@user)
+    @user.has_role?(:poc)
   end
 
   def update?

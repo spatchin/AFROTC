@@ -24,7 +24,7 @@ class UserPolicy < ApplicationPolicy
 
   def edit?
     @user.has_role?(:admin) ||
-    @user.has_role?(:cc, @resource.try(:flight))
+    @user.has_role?(:cc, @record.try(:flight))
   end
 
   def update?

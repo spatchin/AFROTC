@@ -24,7 +24,7 @@ class EventPolicy < ApplicationPolicy
   def edit?
     @user.has_role?(:admin) ||
     @user.has_role?(:poc) ||
-    @resource.created_by?(@user)
+    @record.created_by?(@user)
   end
 
   def update?
