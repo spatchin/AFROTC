@@ -12,14 +12,13 @@
           %th Actions
       %tbody
         - @users.each do |user|
-          %tr
+          %tr{policy(user).show? ? {"data-link": "#{user_path(user)}", style: "cursor: pointer;"} : {}}
             %td= user.name
             %td= user.email
             %td= user.phone_number
             - if current_user.has_role?(:poc) || current_user.has_role?(:admin)
               %td.text-center= user_status(user)
             %td
-              = link_to icon('eye'), user if policy(user).show?
               = link_to icon('pencil-square-o'), edit_user_path(user) if policy(user).edit?
               = link_to icon('minus'), user, method: :delete, data: { confirm: 'Are you sure?' } if user != current_user && policy(user).destroy?
 - if policy(User).new?

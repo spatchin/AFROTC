@@ -19,8 +19,6 @@
         - if @event.mandatory
           %p
             %strong Mandatory
-.row
-  .col-md-offset-3.col-md-6
     .panel.panel-default
       .panel-heading
         %h3= pluralize(@event.users.count, 'Attendee')
@@ -28,8 +26,8 @@
         %ul(style='list-style: none;')
           - @event.users.each do |user|
             %li= user.name
-.row
-  .col-sm-6.text-left
-    = link_to 'Return to events', events_path, class: 'btn btn-default'          
-  .col-sm-6.text-right
-    = link_to 'Edit event', edit_event_path(@event), class: 'btn btn-link'
+    .row
+      .col-sm-6.text-left
+        = link_to 'Return to events', events_path, class: 'btn btn-default'          
+      .col-sm-6.text-right
+        = link_to 'Edit event', edit_event_path(@event), class: 'btn btn-link'

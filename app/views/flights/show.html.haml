@@ -22,12 +22,12 @@
             %tbody
             - @flight.cadets.each do |cadet|
               - unless cadet.name == cc
-                %tr
+                %tr{policy(cadet).show? ? {"data-link": "#{user_path(cadet)}", style: "cursor: pointer;"} : {}}
                   %td= cadet.name
                   %td= cadet.email
                   %td= cadet.phone_number
-.row
-  .col-sm-6.text-left
-    = link_to 'Return to flights', flights_path, class: 'btn btn-default'          
-  .col-sm-6.text-right
-    = link_to 'Edit flight', edit_flight_path(@flight), class: 'btn btn-link'
+    .row
+      .col-sm-6.text-left
+        = link_to 'Return to flights', flights_path, class: 'btn btn-default'          
+      .col-sm-6.text-right
+        = link_to 'Edit flight', edit_flight_path(@flight), class: 'btn btn-link'

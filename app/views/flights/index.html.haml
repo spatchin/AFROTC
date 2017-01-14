@@ -9,11 +9,10 @@
           %th Actions
       %tbody
         - @flights.each do |flight|
-          %tr
+          %tr{policy(flight).show? ? {"data-link": "#{flight_path(flight)}", style: "cursor: pointer;"} : {}}
             %td= flight.name
             %td= flight.cadets.count
             %td
-              = link_to icon('eye'), flight if policy(flight).show?
               = link_to icon('pencil-square-o'), edit_flight_path(flight) if policy(flight).edit?
               = link_to icon('minus'), flight, method: :delete, data: { confirm: 'Are you sure?' } if policy(flight).destroy?
 - if policy(Flight).new?
