@@ -6,12 +6,12 @@
         %tr
           %th Name
           %th Number of cadets
-          %th Actions
+          %th
       %tbody
         - @flights.each do |flight|
-          %tr{policy(flight).show? ? {"data-link": "#{flight_path(flight)}", style: "cursor: pointer;"} : {}}
-            %td= flight.name
-            %td= flight.cadets.count
+          %tr
+            %td.clickable{"data-link": "#{flight_path(flight)}"}= flight.name
+            %td.clickable{"data-link": "#{flight_path(flight)}"}= flight.cadets.count
             %td
               = link_to icon('pencil-square-o'), edit_flight_path(flight) if policy(flight).edit?
               = link_to icon('minus'), flight, method: :delete, data: { confirm: 'Are you sure?' } if policy(flight).destroy?

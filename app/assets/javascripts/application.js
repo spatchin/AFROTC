@@ -28,7 +28,7 @@ $(document).on('turbolinks:load', function(){
   //       $('#clip').tooltip('destroy');
   //   }, 2000)
   // });
-  $("tr[data-link]").click(function() {
+  $(".clickable[data-link]").click(function() {
     window.location = $(this).data("link");
   });
 });

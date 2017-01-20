@@ -30,4 +30,5 @@
       .col-sm-6.text-left
         = link_to 'Return to events', events_path, class: 'btn btn-default'          
       .col-sm-6.text-right
-        = link_to 'Edit event', edit_event_path(@event), class: 'btn btn-link'
+        = link_to 'Edit event', edit_event_path(@event), class: 'btn btn-link' if policy(@event).edit?
+=console

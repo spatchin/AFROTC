@@ -9,15 +9,15 @@
           %th Location
           %th Mandatory?
           %th Date
-          %th Actions
+          %th
       %tbody
         - @events.each do |event|
-          %tr{policy(event).show? ? {"data-link": "#{event_path(event)}", style: "cursor: pointer;"} : {}}
-            %td= event.name
-            %td= event.category
-            %td= event.location
-            %td= event.mandatory ? 'Yes' : 'No'
-            %td= event.date
+          %tr
+            %td.clickable{"data-link": "#{event_path(event)}"}= event.name
+            %td.clickable{"data-link": "#{event_path(event)}"}= event.category
+            %td.clickable{"data-link": "#{event_path(event)}"}= event.location
+            %td.clickable{"data-link": "#{event_path(event)}"}= event.mandatory ? 'Yes' : 'No'
+            %td.clickable{"data-link": "#{event_path(event)}"}= event.date.strftime('%b %d, %H:%M')
             %td
               = link_to icon('pencil-square-o'), edit_event_path(event) if policy(event).edit?
               = link_to icon('minus'), event, method: :delete, data: { confirm: 'Are you sure?' } if policy(event).destroy?

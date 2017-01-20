@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include Pundit
+  
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
   around_action :set_time_zone, if: :current_user
@@ -28,6 +29,6 @@ class ApplicationController < ActionController::Base
 
   def user_not_authorized
     flash[:alert] = "You are not authorized to perform this action."
-    redirect_to(request.referrer || root_path)
+    redirect_back(fallback_location: root_path)
   end  
 end

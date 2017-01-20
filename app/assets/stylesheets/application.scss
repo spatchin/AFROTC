@@ -11,10 +11,10 @@
 @import 'select2-bootstrap';
 
 .jumbotron {
-  background-size: cover;
+  background-size: 100% 125%;
   background-repeat: no-repeat;
   background-color: #000;
-  height: 400px;
+  height: 450px;
 }
 
 p {
@@ -72,6 +72,10 @@ html, body {
   h2 {
     text-decoration: underline;
   }
+}
+
+.clickable {
+  cursor: pointer;
 }
 
 #back-to-top {
