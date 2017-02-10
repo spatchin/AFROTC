@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="col-md-offset-3 col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3>#{@flight.name} Flight</h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-12"></div>
+          <p>
+            <strong>
+              Commander:
+            </strong>
+            <%= cc = @flight.cadets.with_role(:cc, @flight).take.name %>
+          </p>
+          <p>
+            <strong>
+              Cadets
+            </strong>
+          </p>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @flight.cadets.each do |cadet| %>
+                <% unless cadet.name == cc %>
+                  <tr data-link='<%= user_path(cadet) %>' style='cursor: pointer;'>
+                    <td>
+                      <%= cadet.name %>
+                    </td>
+                    <td>
+                      <%= cadet.email %>
+                    </td>
+                    <td>
+                      <%= cadet.phone_number %>
+                    </td>
+                  </tr>
+                <% end %>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 text-left">
+        <%= link_to 'Return to flights', flights_path, class: 'btn btn-default'           %>
+      </div>
+      <div class="col-sm-6 text-right">
+        <%= link_to 'Edit flight', edit_flight_path(@flight), class: 'btn btn-link' %>
+      </div>
+    </div>
+  </div>
+</div>
+

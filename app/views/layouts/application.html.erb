@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>
+      <%= content_for?(:title) ? yield(:title) : 'AFROTC Detachment 925' %>
+    </title>
+    <meta content="<%= content_for?(:description) ? yield(:description) : 'Afrotc' %>" name="description"/>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div id="header">
+      <%= render 'layouts/navigation' %>
+      <%= render 'pages/subnav', image_location: subnav_img unless subnav_img.nil? %>
+    </div>
+    <div id="wrapper">
+      <main role="main">
+        <div class="container">
+          <%= render 'layouts/messages' %>
+          <%= yield unless request.fullpath == '/' %>
+        </div>
+        <%= yield if request.fullpath == '/' %>
+        <div class="container-fluid"></div>
+        <a class="btn btn-primary" id="back-to-top" href="#" role="button" style="background-color: rgb(193,18,33); border-color: rgb(193,18,33);">
+          <span class="glyphicon glyphicon-chevron-up"></span>
+        </a>
+      </main>
+      <div id="push"></div>
+    </div>
+    <div id="footer">
+      <%= render 'layouts/footer' %>
+    </div>
+  </body>
+</html>

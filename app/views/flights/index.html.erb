@@ -1,0 +1,51 @@
+<%= render 'cadet_area/header', page: :flight %>
+<div class="row">
+  <div class="col-md-offset-3 col-md-6">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Number of cadets</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @flights.each do |flight| %>
+          <tr>
+            <td class="clickable" data-link="<%= flight_path(flight) %>">
+              <%= flight.name %>
+            </td>
+            <td class="clickable" data-link="<%= flight_path(flight) %>">
+              <%= flight.cadets.count %>
+            </td>
+            <td>
+              <%= link_to icon('pencil-square-o'), edit_flight_path(flight) if policy(flight).edit? %>
+              <%= link_to icon('minus'), flight, method: :delete, data: { confirm: 'Are you sure?' } if policy(flight).destroy? %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<% @flights.each do |flight| %>
+  <tr>
+    <td class="clickable" data-link="<%= flight_path(flight) %>">
+      <%= flight.name %>
+    </td>
+    <td class="clickable" data-link="<%= flight_path(flight) %>">
+      <%= flight.cadets.count %>
+    </td>
+    <td>
+      <%= link_to icon('pencil-square-o'), edit_flight_path(flight) if policy(flight).edit? %>
+      <%= link_to icon('minus'), flight, method: :delete, data: { confirm: 'Are you sure?' } if policy(flight).destroy? %>
+    </td>
+  </tr>
+<% end %>
+<% if policy(Flight).new? %>
+  <div class="row">
+    <div class="col-md-offset-3 col-md-6 text-center">
+      <%= link_to 'New Flight', new_flight_path, class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>

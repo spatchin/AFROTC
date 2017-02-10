@@ -1,0 +1,16 @@
+<div class="page-header">
+  <ul class="nav nav-pills">
+    <li class="<%= 'active' if page == :home %>">
+      <%= link_to 'Cadet Area', '/cadet_area' %>
+    </li>
+    <li class="<%= 'active' if page == :user %>">
+      <%= link_to 'Cadets', users_path %>
+    </li>
+    <li class="<%= 'active' if page == :event %>">
+      <%= link_to 'Events', events_path %>
+    </li>
+    <li class="<%= 'active' if page == :flight %>">
+      <%= link_to 'Flights', flights_path %>
+    </li>
+  </ul>
+</div>

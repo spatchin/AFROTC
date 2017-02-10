@@ -1,9 +1,0 @@
-= bootstrap_form_for event do |f|
-  = f.alert_message "Please fix the errors below."
-  = f.text_field :name
-  = f.text_field :category
-  = f.text_field :location, label: 'Where'
-  = f.datetime_local_field :date, label: 'When'
-  = f.check_box :mandatory
-  = f.select :user_ids, @users.map{|u| [u.name, u.id]}, {label: 'Attendance'}, multiple: true, class: 'select2' if controller.action_name == 'edit'
-  = f.submit 'Submit', class: 'btn btn-success', style: 'width:100%;'

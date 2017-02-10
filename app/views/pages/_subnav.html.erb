@@ -1,0 +1,21 @@
+<div class="jumbotron" style="margin-top: 0; background-image: url('<%= image_location %>');">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-2">
+        <% if current_page?('/') %>
+          <img src="det 925 black.png" style="width:200px;"/>
+        <% end %>
+      </div>
+      <div class="col-sm-10">
+        <ul class="list-inline text-center" id="home-links">
+          <li><%= link_to 'Cadre', '/cadre' %></li>
+          <li><%= link_to 'Prospective Students', '/prospective' %></li>
+          <li><%= link_to 'Photos', 'https://www.facebook.com/pg/Flying-Badgers-Detachment-925-126066737404479/photos/' %></li>
+          <li><%= link_to 'Arnold Air Society', '/aas' %></li>
+          <li><%= link_to 'Drill Team & Color Guard', '/dtcg' %></li>
+          <li><%= link_to 'Alumni', '/alumni' %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

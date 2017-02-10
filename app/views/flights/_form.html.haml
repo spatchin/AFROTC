@@ -1,4 +1,0 @@
-= bootstrap_form_for flight do |f|
-  = f.text_field :name if current_user.has_role?(:admin)
-  = f.select :cadet_ids, User.all.map { |u| [u.name, u.id] }, {label: 'Cadets'}, multiple: true, class: 'select2'
-  = f.submit 'Submit', class: 'btn btn-success', style: 'width:100%;'

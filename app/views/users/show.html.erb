@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-md-offset-3 col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3>
+          <%= @user.name %>
+        </h3>
+      </div>
+      <div class="panel-body">
+        <p>
+          <strong>Email:</strong>
+          <%= @user.email %>
+        </p>
+        <p>
+          <strong>Roles:</strong>
+          <%= @user.roles.pluck(:name).join(', ') %>
+        </p>
+        <p>
+          <strong>LLAB Attendance:</strong>
+          <% attended = @user.events.select { |e| e.category.downcase == 'llab' }.count %>
+          <% total = Event.all.select { |e| e.category.downcase == 'llab' }.count %>
+          <%= "#{attended}/#{total}" %>
+        </p>
+        <p>
+          <strong>PT Attendance:</strong>
+          <% attended = @user.events.select { |e| e.category.downcase == 'pt' }.count %>
+          <% total = Event.all.select { |e| e.category.downcase == 'pt' }.count %>
+          <%= "#{attended}/#{total}" %>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 text-left">
+        <%= link_to 'Return to users', users_path, class: 'btn btn-default' %>
+      </div>
+      <div class="col-sm-6 text-right">
+        <%= link_to 'Edit user', edit_user_path(@user), class: 'btn btn-link' %>
+      </div>
+    </div>
+  </div>
+</div>
