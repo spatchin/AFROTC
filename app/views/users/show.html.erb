@@ -13,7 +13,7 @@
         </p>
         <p>
           <strong>Roles:</strong>
-          <%= @user.roles.pluck(:name).join(', ') %>
+          <%= @user.roles.map{ |r| r.name.upcase }.to_sentence %>
         </p>
         <p>
           <strong>LLAB Attendance:</strong>
@@ -31,7 +31,7 @@
     </div>
     <div class="row">
       <div class="col-sm-6 text-left">
-        <%= link_to 'Return to users', users_path, class: 'btn btn-default' %>
+        <%= link_to 'Back', :back, class: 'btn btn-default' %>
       </div>
       <div class="col-sm-6 text-right">
         <%= link_to 'Edit user', edit_user_path(@user), class: 'btn btn-link' %>

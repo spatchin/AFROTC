@@ -12,12 +12,14 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require dataTables/jquery.dataTables
+//= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require bootstrap-sprockets
 //= require select2
+//= require local_time
 //= require_tree .
 
-$(document).on('turbolinks:load', function(){
+$(document).on('ready', function(){
   $(".alert" ).fadeOut(5000);
   initSelect2();
   // var clipboard = new Clipboard('#clip');
@@ -28,13 +30,13 @@ $(document).on('turbolinks:load', function(){
   //       $('#clip').tooltip('destroy');
   //   }, 2000)
   // });
-  $(".clickable[data-link]").click(function() {
+  $(".clickable").click(function() {
     window.location = $(this).data("link");
   });
 });
 
 $(window).resize(function(){
- initSelect2();
+  initSelect2();
 });
 
 function initSelect2(){

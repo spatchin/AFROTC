@@ -2,7 +2,7 @@
   <div class="col-md-offset-3 col-md-6">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3>#{@flight.name} Flight</h3>
+        <h3><%= @flight.name %> Flight</h3>
       </div>
       <div class="panel-body">
         <div class="row">
@@ -29,16 +29,10 @@
             <tbody>
               <% @flight.cadets.each do |cadet| %>
                 <% unless cadet.name == cc %>
-                  <tr data-link='<%= user_path(cadet) %>' style='cursor: pointer;'>
-                    <td>
-                      <%= cadet.name %>
-                    </td>
-                    <td>
-                      <%= cadet.email %>
-                    </td>
-                    <td>
-                      <%= cadet.phone_number %>
-                    </td>
+                  <tr class='clickable' data-link='<%= user_path(cadet) %>' style='cursor: pointer;'>
+                    <td><%= cadet.name %></td>
+                    <td><%= cadet.email %></td>
+                    <td><%= cadet.phone_number %></td>
                   </tr>
                 <% end %>
               <% end %>

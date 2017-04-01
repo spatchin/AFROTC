@@ -54,7 +54,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
-  
+
   after_create :assign_default_role
 
   def assign_default_role
